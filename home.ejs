@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blockaders</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+          height: 10vh;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333;
+            color: #fff;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        .logo {
+            font-size: 24px;
+        }
+
+        .button {
+          background-image: linear-gradient(to top left, #267871 0%, #136a8a 100%);
+            color: #fff;
+            padding: 10px 20px;
+            border: solid #fff;
+            cursor: pointer;
+            
+        }
+
+        .main-content {
+          background-image: linear-gradient(to top left, #267871 0%, #136a8a 100%);
+            display: flex;
+            flex-direction: column;
+            
+            height: 90vh;
+        }
+
+        .top{
+         display: flex;
+         flex-direction: row; 
+         color: #fff;
+        }
+
+        .instructions {
+            flex: 1; 
+            padding: 20px;
+        }
+
+        .progress-bar {
+            flex: 1; 
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            
+        }
+
+        .questions {
+            margin-top:10% ;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .box {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 10px 0;
+            padding: 20px;
+            
+            background-color: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(200px);
+            filter: blur();
+            box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.25);
+            color: #fff;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">Logo</div>
+        
+        <button class="button">User</button>
+    </div>
+
+    <div class="main-content">
+        <div class="top">
+            <div class="instructions">
+              instructions <br><br>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec tristique massa.
+          </div>
+          <div class="progress-bar">
+              Your Progress : 100%
+          </div>
+      </div>
+        <div class="questions">
+            <div class="box">
+                <div class="question">Question 1: insert que here</div>
+                <button class="status">Status</button>
+            </div>
+            <div class="box">
+                <div class="question">Question 2: insert que here</div>
+                <button class="status">Status</button>
+            </div>
+            <div class="box">
+                <div class "question">Question 3: insert que here</div>
+                <button class="status">Status</button>
+            </div>
+            <div class="box">
+                <div class="question">Question 4: insert que here</div>
+                <button class="status">Status</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        
+    </script>
+</body>
+</html>
