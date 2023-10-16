@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Coding Competition</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            text-align: center;
+            background-color: #136a8a;
+            color: #D3D3D3;
+            padding: 20px;
+        }
+
+        main {
+            display: flex;
+            margin: 20px;
+        }
+
+        .question, .output {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin: 5px;
+        }
+
+        .output {
+            background-color: #f0f0f0;
+        }
+
+        .editor-container {
+            flex: 2;
+            display: flex;
+            flex-direction: column;
+            margin-left: 20px;
+        }
+
+        .output-box {
+            min-height: 100px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            overflow: auto;
+            padding: 10px;
+            margin: 5px;
+            background-color: #f0f0f0;
+        }
+
+        textarea {
+            flex: 1;
+            min-height: 100px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            overflow: auto;
+            padding: 10px;
+            margin: 5px 0;
+        }
+
+        #execute-code-button {
+            align-self: center;
+            margin: 10px 0;
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #execute-code-button:hover {
+            background-color: #444;
+        }
+
+        iframe {
+            width: 100%;
+            border: none;
+            height: 400px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Blockaders</h1>
+    </header>
+    <main>
+        <div class="question">
+            <h2>Question Description</h2>
+            <p>This is the question description text.</p>
+        </div>
+        <div class="editor-container">
+            <textarea id="code-editor">//Answer goes here</textarea>
+            <button id="execute-code-button">Execute Code</button>
+            <div class="output-box" id="output-box">
+                <!-- Output content goes here -->
+            </div>
+            <iframe id="output-iframe"></iframe>
+        </div>
+    </main>
+    <script>
+        document.getElementById('execute-code-button').addEventListener('click', function() {
+            const code = document.getElementById('code-editor').value;
+            const outputBox = document.getElementById("output-box");
+            const iframe = document.getElementById('output-iframe');
+            const iframeDocument = iframe.contentWindow.document;
+            iframeDocument.open();
+            iframeDocument.write('<html><head></head><body>');
+            try {
+                const result = eval(code);
+                outputBox.textContent = 'Output: ' + result;
+                iframeDocument.write('<p>Output:<br>' + result + '</p>');
+            } catch (error) {
+                outputBox.textContent = 'Error: ' + error.message;
+                iframeDocument.write('<p>Error: ' + error.message + '</p>');
+            }
+            iframeDocument.write('</body></html>');
+            iframeDocument.close();
+        });
+    </script>
+</body>
+</html>

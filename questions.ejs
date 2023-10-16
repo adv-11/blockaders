@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Coding Competition</title>
+    <link rel="stylesheet" type="text/css" href="https://codemirror.net/lib/codemirror.css">
+    <script src="https://codemirror.net/lib/codemirror.js"></script>
+    <script src="https://codemirror.net/mode/javascript/javascript.js"></script>
+    <script src="https://codemirror.net/addon/selection/active-line.js"></script>
+    <script src="https://codemirror.net/addon/edit/matchbrackets.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            text-align: center;
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+        }
+
+        main {
+            display: flex;
+            margin: 20px;
+        }
+
+        .question, .output {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin: 5px;
+        }
+
+        .editor-container {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .output-box {
+           
+        }
+
+        #code-editor {
+            flex: 1;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #save-code-button {
+            margin: 10px auto;
+            padding: 5px 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Question Title</h1>
+    </header>
+    <main>
+        <div class="question">
+            <h2>Question Description</h2>
+            <p>This is the question description text.</p>
+        </div>
+        <div class="editor-container">
+            <div class="output">
+                <h2>Output</h2>
+                <div class="output-box" id="output-box">
+                    <!-- Output content goes here -->
+                </div>
+            </div>
+            <div id="code-editor"></div>
+            <button id="save-code-button">Save Code</button>
+        </div>
+    </main>
+    <script>
+        // Initialize CodeMirror
+        var codeEditor = CodeMirror(document.getElementById("code-editor"), {
+            lineNumbers: true,
+            mode: "javascript",
+            matchBrackets: true,
+            styleActiveLine: true,
+        });
+
+        // Add a listener to update the output box with CodeMirror content
+        codeEditor.on("change", function (instance) {
+            // You can execute or test the code and display the output here
+            const code = instance.getValue();
+            const outputBox = document.getElementById("output-box");
+            outputBox.innerHTML = `Output:\n${executeCode(code)}`;
+        });
+
+        // Function to execute or test the code (you can customize this)
+        function executeCode(code) {
+            try {
+                return eval(code); // Execute JavaScript code
+            } catch (error) {
+                return error.message; // Handle any errors
+            }
+        }
+
+        // Your code to save the code can go here (e.g., using AJAX or a back-end API)
+        // When the user clicks the "Save Code" button
+        document.getElementById('save-code-button').addEventListener('click', function() {
+            const code = codeEditor.getValue();
+            // Implement code saving logic here (e.g., sending code to a server)
+            // Example: sendCodeToServer(code);
+            // Display a success message or handle errors accordingly
+        });
+    </script>
+</body>
+</html>
